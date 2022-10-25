@@ -11,14 +11,14 @@ SPOTIFY_PLAY_Y = 1340
 
 #EOT = end of track
 SPOTIFY_EOT_X = 627
-SPOTIFY_EOT_Y = 1375
+SPOTIFY_EOT_Y = 1367
 
 #ableton record button
-ABLETON_RECORD_X = 1818
+ABLETON_RECORD_X = 1800
 ABLETON_RECORD_Y = 70
 
 #ableton record button
-ABLETON_STOP_X = 1795
+ABLETON_STOP_X = 1775
 ABLETON_STOP_Y = 70
 
 #top of the screen (for activating window)
@@ -31,7 +31,7 @@ ABLETON_ITEM_Y = 175
 PLAYLIST_SIZE = 36
 
 
-i = 4
+i = 1
 while i < PLAYLIST_SIZE:
     pyautogui.click(ABLETON_RECORD_X, ABLETON_RECORD_Y)
     pyautogui.click(SPOTIFY_PLAY_X, SPOTIFY_PLAY_Y)

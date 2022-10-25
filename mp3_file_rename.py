@@ -1,7 +1,12 @@
-import eyed3
 import os
+from mutagen.mp3 import MP3  
+from mutagen.easyid3 import EasyID3  
+import mutagen.id3  
+from mutagen.id3 import ID3, TIT2, TIT3, TALB, TPE1, TRCK, TYER  
+import glob  
 
-dir_path = r'F:\\ProgramData\\ABLETON_MEDIA\\Ableton Renders\\spotify_recorder\\Liked_Songs_11092022'
+# dir_path = r'F:\\ProgramData\\ABLETON_MEDIA\\Ableton Renders\\spotify_recorder\\Liked_Songs_11092022'
+dir_path = f"E:\\Audio_temp\\Spotify_221022"
 
 res = []
 
@@ -10,12 +15,13 @@ for path in os.listdir(dir_path):
         res.append(path)
 
 for file_name in res:
-    audiofile = eyed3.load(f"{dir_path}\\{file_name}")
-    audiofile.tag.artist = file_name.split(" - ").pop().split(".mp3",1)[0]
+    mp3file = MP3(f"{dir_path}\\{file_name}", ID3=EasyID3) 
+    artist = file_name.split(" - ").pop().split(".mp3",1)[0]
     title = file_name.split(" - ")[:-1]
     title = ' - '.join(title)
-    audiofile.tag.title = title
-    audiofile.tag.save()
+    mp3file["artist"] = [f"{artist}"]  
+    mp3file["title"] = [f"{title}"] 
+    mp3file.save()   
 
 
 
